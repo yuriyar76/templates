@@ -1,0 +1,6 @@
+#textback_widget, #tb_welcome, #textback-welcome-avatar, #tb_welcome_tooltip, .textback-welcome-tooltip::before {
+    display:none!important;
+}
+#modal_calculate_cost_new #btn_modal_cost{
+    width:100%!important;
+}

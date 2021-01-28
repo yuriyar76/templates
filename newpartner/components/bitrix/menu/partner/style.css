@@ -1,0 +1,39 @@
+ul.partner {
+	margin:0;
+	padding:0;
+	list-style:none;
+	margin-bottom:30px;
+}
+
+ul.partner li {
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 8px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+	background-color: #ffffff;
+    color: #555555;
+	background-image: linear-gradient(#f5f5f5, #f5f5f5 60%, #e6e6e6);
+    background-repeat: no-repeat;
+    border: 1px solid #e6e6e6;
+    filter: none;
+}
+ul.partner li:hover, ul.partner li:focus, ul.partner li:active {
+	background-image: linear-gradient(#fafafa, #fafafa 60%, #f5f5f5);
+}
+ul.partner li a {
+	text-decoration:none;
+	color: #555555;
+}
+ul.partner li.selected {
+	background-image: linear-gradient(#2e83bf, #2e83bf 60%, #315fa7);
+}
+ul.partner li.selected a {
+	color:#fff;
+}

@@ -1,0 +1,37 @@
+<?
+$MESS["SUP_ID"] = "ID";
+$MESS["SUP_F_FILTER"] = "Filtras";
+$MESS["SUP_ASK"] = "Sukurti naujà praneðimà";
+$MESS["SUP_F_ID"] = "Uþklausos ID";
+$MESS["SUP_EXACT_MATCH"] = "Ieðkoti pagal visus áraðytus duomenis";
+$MESS["SUP_F_LAMP"] = "Indikatorius";
+$MESS["SUP_RED"] = "Raudonas";
+$MESS["SUP_GREEN"] = "Þalias";
+$MESS["SUP_GREY"] = "Pilkas";
+$MESS["SUP_F_CLOSE"] = "Uþdaryta/atidaryta";
+$MESS["SUP_CLOSED"] = "Uþdaryta";
+$MESS["SUP_OPENED"] = "árankis prieinamas";
+$MESS["SUP_ALL"] = "(viskà)";
+$MESS["SUP_F_MESSAGE"] = "Praneðimo tekstas";
+$MESS["SUP_F_SET_FILTER"] = "Ádiegti";
+$MESS["SUP_F_DEL_FILTER"] = "Iðvalyti";
+$MESS["SUP_LAMP"] = "Indikatorius";
+$MESS["SUP_TITLE"] = "Pavadinimas";
+$MESS["SUP_TIMESTAMP"] = "Atnaujinta";
+$MESS["SUP_MODIFIED_BY"] = "Atnaujino";
+$MESS["SUP_MESSAGES"] = "Praneð.";
+$MESS["SUP_STATUS"] = "Statusas";
+$MESS["SUP_GREEN_ALT"] = "paskutiná kartà Jûs paraðëte uþklausimà";
+$MESS["SUP_EDIT_TICKET"] = "Keisti uþklausimà";
+$MESS["SUP_EDIT"] = "Redaguoti";
+$MESS["SUP_TOTAL"] = "Total";
+$MESS["SUP_GREY_ALT"] = "uþklausimas uþdarytas";
+$MESS["SUP_RED_ALT"] = "paskutinis áraðë techninio palaikymo darbuotojas";
+$MESS["SUP_RED_ALT_2"] = "paskutiná kartà á uþklausimà jûsø oponentas paraðë";
+$MESS["SUP_GREEN_ALT_SUP"] = "paskutinis praneðimas yra jûsø";
+$MESS["SUP_RED_ALT_SUP"] = "paskutinis áraðë techninio palaikymo klientas (jûs esate atsakingas)";
+$MESS["SUP_YELLOW_ALT_SUP"] = "paskutinis áraðë techninio palaikymo klientas (jûs nesate atsakingas)";
+$MESS["SUP_GREY_ALT_SUP"] = "bilietas uþdarytas";
+$MESS["SUP_GREEN_S_ALT_SUP"] = "paskutinis áraðë techninio palaikymo darbuotojas";
+$MESS["SUP_VIEW_TICKET"] = "Perþiûrëti bilietà";
+?>

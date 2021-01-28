@@ -1,0 +1,30 @@
+<?
+$MESS ['SUP_ID'] = "ID";
+$MESS ['SUP_F_FILTER'] = "Filtre";
+$MESS ['SUP_ASK'] = "Yeni sorgu oluþtur";
+$MESS ['SUP_F_ID'] = "Sorgunun ID";
+$MESS ['SUP_EXACT_MATCH'] = "Filtrelemede tam eþleþme ara";
+$MESS ['SUP_F_LAMP'] = "Gösterge";
+$MESS ['SUP_RED'] = "kýrmýzý";
+$MESS ['SUP_GREEN'] = "yeþil";
+$MESS ['SUP_GREY'] = "gri";
+$MESS ['SUP_F_CLOSE'] = "Kapalý/açýk";
+$MESS ['SUP_CLOSED'] = "kapalý";
+$MESS ['SUP_OPENED'] = "açýk";
+$MESS ['SUP_ALL'] = "(tümü)";
+$MESS ['SUP_F_MESSAGE'] = "Ýleti metni";
+$MESS ['SUP_F_SET_FILTER'] = "Ayarla";
+$MESS ['SUP_F_DEL_FILTER'] = "Sýfýrla";
+$MESS ['SUP_LAMP'] = "Gösterge";
+$MESS ['SUP_TITLE'] = "Baþlýk";
+$MESS ['SUP_TIMESTAMP'] = "Deðiþtirildi";
+$MESS ['SUP_MODIFIED_BY'] = "Deðiþtiren";
+$MESS ['SUP_MESSAGES'] = "Ýleti.";
+$MESS ['SUP_STATUS'] = "Durum";
+$MESS ['SUP_GREEN_ALT'] = "sorgu içerisinde son kez siz yazmýþnýz";
+$MESS ['SUP_EDIT_TICKET'] = "Sorguyu deðiþtir";
+$MESS ['SUP_EDIT'] = "Deðiþtir";
+$MESS ['SUP_TOTAL'] = "Toplam";
+$MESS ['SUP_RED_ALT_2'] = "sorgu içerisinde son kez sizin rakibiniz yazmýþ";
+$MESS ['SUP_GREY_ALT'] = "sorgu kapalý";
+?>

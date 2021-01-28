@@ -1,0 +1,37 @@
+<?
+$MESS["SUP_ALL"] = "(Todos)";
+$MESS["SUP_GREEN_ALT"] = "respondida por você";
+$MESS["SUP_CLOSED"] = "fechado";
+$MESS["SUP_F_CLOSE"] = "Fechado / Aberto";
+$MESS["SUP_ASK"] = "Criar novo Ticket";
+$MESS["SUP_EDIT_TICKET"] = "Editar Ticket";
+$MESS["SUP_F_FILTER"] = "Filtrar";
+$MESS["SUP_GREEN"] = "verde";
+$MESS["SUP_GREY"] = "cinza";
+$MESS["SUP_ID"] = "ID";
+$MESS["SUP_LAMP"] = "Ind.";
+$MESS["SUP_F_LAMP"] = "Indicador";
+$MESS["SUP_F_ID"] = "ID de inquérito";
+$MESS["SUP_F_MESSAGE"] = "Mensagem";
+$MESS["SUP_TIMESTAMP"] = "Modificado";
+$MESS["SUP_MODIFIED_BY"] = "Modificado por";
+$MESS["SUP_EDIT"] = "Modificar";
+$MESS["SUP_MESSAGES"] = "Msgs.";
+$MESS["SUP_OPENED"] = "abriu";
+$MESS["SUP_RED"] = "vermelho";
+$MESS["SUP_F_DEL_FILTER"] = "Retirar o Filtro";
+$MESS["SUP_F_SET_FILTER"] = "Definir filtro";
+$MESS["SUP_STATUS"] = "Estado";
+$MESS["SUP_TITLE"] = "Assunto";
+$MESS["SUP_GREY_ALT"] = "Ticket fechado";
+$MESS["SUP_TOTAL"] = "Total";
+$MESS["SUP_EXACT_MATCH"] = "Usar a correspondência exata";
+$MESS["SUP_RED_ALT"] = "ltimo post feito pela equipe suporte técnico";
+$MESS["SUP_RED_ALT_2"] = "ltimo post feito pela equipe suporte técnico";
+$MESS["SUP_GREEN_ALT_SUP"] = "a última mensagem é sua";
+$MESS["SUP_RED_ALT_SUP"] = "ltimo post feito por um cliente suporte técnico (você é responsável)";
+$MESS["SUP_YELLOW_ALT_SUP"] = "ltimo post feito por um cliente suporte técnico (você não é responsável)";
+$MESS["SUP_GREY_ALT_SUP"] = "o Ticket está fechado";
+$MESS["SUP_GREEN_S_ALT_SUP"] = "ltimo post feito pela equipe suporte técnico";
+$MESS["SUP_VIEW_TICKET"] = "Visualizar Ticket";
+?>

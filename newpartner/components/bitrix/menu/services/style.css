@@ -1,0 +1,13 @@
+#header ul.menu {
+	/*
+	margin:0; padding:0; list-style:none; position:absolute; left:50%; top:35px; margin-left:-325px; width:7000px;
+	*/
+	float: right;
+    list-style: outside none none;
+    margin: 35px 50px 20px;
+    padding: 0;
+}
+#header ul.menu li {float:left; margin-right:5px;}
+#header ul.menu li.last {margin-right:0;}
+#header ul.menu li a {display:block; font-size:14px; color:#606060; text-decoration:none; text-transform:lowercase; padding:5px 10px; border-radius:10px; padding-top:3px;}
+#header ul.menu li a:hover, #header ul.menu li a.active { background:#0b99c3; color:#fff;}
