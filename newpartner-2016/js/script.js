@@ -1,4 +1,23 @@
 $(document).ready(function() {
+    /* оплата картой по номеру накладной с главной */
+
+    $('#pay_card_submit').on('click', function(){
+        let inputPayCard = $('#input_pay_card').val();
+        if(!inputPayCard.length) return;
+        let data = {'number': inputPayCard};
+      //  console.log(data);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/payment_invoice_card/index.php",
+            data: data,
+            success: function(data){
+
+            }
+        });
+
+
+    });
     $("#btn_modal_cost").on('click', function(){
         $('.alert.alert-danger.display-error').css('display', 'none');
         $('#price_calc_p').css('display', 'block');
@@ -87,7 +106,7 @@ $(document).ready(function() {
     /* проверка email в форме калькулятор */
     function valid_email_user_authorize(){
         let data = $(this).serializeArray();
-        console.log(data);
+        //console.log(data);
         $.ajaxSetup({cache: false});
         $.ajax({
             type: "POST",
@@ -142,7 +161,6 @@ $(document).ready(function() {
         });
 
     }
-
     $('#form_email_52').on('change', valid_email_user_authorize);
     $('#form_email_52_order').on('change', valid_email_user_authorize);
 
@@ -324,8 +342,6 @@ $(document).ready(function() {
     $('#modal_order_service_pay_close').on('click', function () {
         location.reload();
     });
-
-
 
 
     // форма соискателя работы курьером
