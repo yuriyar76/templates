@@ -293,7 +293,6 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
         'ListOfDocs' => json_encode($arParamsCheck)
     ];
     //  {"DocNumber":"99-4885033","DocZNumber":"","isGoods":0,"PaymentType":1,"CheckEmail":"","CheckPhone":"","Goods":{"Good_0":{"GoodsName":"Сумма к оплате","GoodsCount":1,"GoodsPrice":390,"GoodsSum":390,"GoodsNDS":"0","GoodsSumNDS":0}}}
-
     $client = soap_inc();
     if(is_object($client)){
         /* получить кассовый чек */
@@ -307,8 +306,6 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
     }else{
         AddToLogs('OrdersResultCheck', ['ERROR' => $client]);
     }
-
-
     $arJson[] = $data;
     $arJsonSend =$arJson;
     $arParamsJson = [
@@ -454,8 +451,6 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
                          "Ошибка добавления заявки")]);
                  }
              }
-
-
      /* отправка писем */
   if($arrInfDocs[17] !== 'AB'){
         $data['CREATOR_NAME_TITLE_SENDER'] = "Отправитель";
@@ -584,6 +579,8 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
      exit;
 
  } /* конец обработки платежа */
+
+
 
 /* обработка из формы заказать услугу на главной */
 if($type_pay === 'Y' )

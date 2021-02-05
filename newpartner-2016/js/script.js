@@ -3,15 +3,26 @@ $(document).ready(function() {
 
     $('#pay_card_submit').on('click', function(){
         let inputPayCard = $('#input_pay_card').val();
-        if(!inputPayCard.length) return;
-        let data = {'number': inputPayCard};
-      //  console.log(data);
+        let inputPayCardZ = $('#input_pay_card_z').val();
+        if(!(inputPayCard.length || inputPayCardZ.length) ) return;
+        let data = {'number': inputPayCard, 'number_z': inputPayCardZ };
+        // console.log(data);
         $.ajax({
             type: "POST",
             dataType: "json",
             url: "/payment_invoice_card/index.php",
             data: data,
             success: function(data){
+               // console.log(data);
+                if (data.error){
+                    alert(data.error);
+                    return false;
+                }
+                if(data.Sum && data.Org){
+                   $.cookie("pay_invoice", "Y");
+                    window.location.href = `https://newpartner.ru/payment_invoice/?sum_inv=${data.Sum}&org_inv=${data.Org}&number_invoice=${data.Number_inv}&number_invoice_z=${data.Number_inv_z} `;
+                    return false;
+                }
 
             }
         });

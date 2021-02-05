@@ -368,8 +368,7 @@
                                 <div class="form-group form-group-sm">
                                     <label for="" class="control-label"><span id="chLabel3">Адрес получателя</span><span
                                                 class="form-required">*</span></label>
-                                    <textarea class="form-control" name="form_textarea_103">
-                                        <?=iconv('utf-8','windows-1251',$_COOKIE["inv_form_textarea_103"]);?></textarea>
+                                    <textarea class="form-control" name="form_textarea_103"><?=iconv('utf-8','windows-1251',$_COOKIE["inv_form_textarea_103"]);?></textarea>
                                 </div>
                                 <div class="form-group form-group-sm">
                                     <label for="" class="control-label"><span id="chLabel2">ФИО получателя</span><span
@@ -736,6 +735,7 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
 
 
 
