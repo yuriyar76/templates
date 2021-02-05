@@ -13,15 +13,15 @@ $(document).ready(function() {
             url: "/payment_invoice_card/index.php",
             data: data,
             success: function(data){
-               // console.log(data);
+                console.log(data);
                 if (data.error){
                     alert(data.error);
                     return false;
                 }
                 if(data.Sum && data.Org){
                    $.cookie("pay_invoice", "Y");
-                    window.location.href = `https://newpartner.ru/payment_invoice/?sum_inv=${data.Sum}&org_inv=${data.Org}&number_invoice=${data.Number_inv}&number_invoice_z=${data.Number_inv_z} `;
-                    return false;
+                    window.open(`https://newpartner.ru/payment_invoice/?org_inv=${data.Org}`, '_blank');
+                   return false;
                 }
 
             }

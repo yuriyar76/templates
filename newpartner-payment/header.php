@@ -4,9 +4,13 @@ header('Content-Type: text/html; charset=utf-8');
 include_once($_SERVER['DOCUMENT_ROOT']."/bitrix/components/black_mist/delivery.packages/functions.php");
 
 AddToLogs('REQUESTS_SBER', ['get' => $_GET, 'data' => 'templates/newpartner-payment/header.php']);
-$type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
+$type_pay =  trim(htmlspecialchars($_COOKIE['paycard_bank']));
 /* обработка платежа */
  if($_GET['status'] == 1){
+    if (!empty($_SESSION['DataInvoicePay']) && $_COOKIE['pay_invoice'] == 'Y'){
+        header('Location: /payment_invoice/index.php');
+        exit();
+    }
     $data = [];
     $data_app = [];
     $stampfl = htmlspecialcharsEx($_COOKIE['pay_lk_fl']); /* метка если из лк физлиц */
@@ -293,8 +297,9 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
         'ListOfDocs' => json_encode($arParamsCheck)
     ];
     //  {"DocNumber":"99-4885033","DocZNumber":"","isGoods":0,"PaymentType":1,"CheckEmail":"","CheckPhone":"","Goods":{"Good_0":{"GoodsName":"Сумма к оплате","GoodsCount":1,"GoodsPrice":390,"GoodsSum":390,"GoodsNDS":"0","GoodsSumNDS":0}}}
+
     $client = soap_inc();
-    if(is_object($client)){
+  if(is_object($client)){
         /* получить кассовый чек */
         $result = $client->SetNewCheck ($arParamsJsonCheck);
         $chResult = $result->return;
@@ -306,6 +311,8 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
     }else{
         AddToLogs('OrdersResultCheck', ['ERROR' => $client]);
     }
+
+
     $arJson[] = $data;
     $arJsonSend =$arJson;
     $arParamsJson = [
@@ -451,6 +458,8 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
                          "Ошибка добавления заявки")]);
                  }
              }
+
+
      /* отправка писем */
   if($arrInfDocs[17] !== 'AB'){
         $data['CREATOR_NAME_TITLE_SENDER'] = "Отправитель";
@@ -580,8 +589,6 @@ $type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
 
  } /* конец обработки платежа */
 
-
-
 /* обработка из формы заказать услугу на главной */
 if($type_pay === 'Y' )
  {
@@ -592,14 +599,15 @@ if($type_pay === 'Y' )
           $arResult['PAYCARD'][$k] = trim(htmlspecialcharsEx($value));
       }
     }
-   /* if ($USER->isAdmin()){
+    if ($USER->isAdmin()){
         dump($arResult);
-    }*/
+    }
     /* браузер клиента не поддерживает cookie */
     if (empty($arResult['PAYCARD'])){
         header("Location: https://newpartner.ru?nocard=1");
         exit;
     }
+
     /* запрос в 1с за номером */
     $clientw = soap_inc();
     $id_partner = 27122866;
@@ -626,23 +634,29 @@ if($type_pay === 'Y' )
         $delivery_payment_who = "Другой";
     }
         $organization = $arResult['PAYCARD']['form_text_49'];
-        $sender_name = $arResult['PAYCARD']['form_text_50'];
-        $phone_send = $arResult['PAYCARD']['form_text_51'];
-        $mail_send = $arResult['PAYCARD']['form_email_52'];
-        $city_send = $arResult['PAYCARD']['form_text_55'];
-        $sender_address = $arResult['PAYCARD']['form_textarea_56'];
-        $recipient_name = $arResult['PAYCARD']['form_text_62'];
-        $city_recipient = $arResult['PAYCARD']['form_text_57'];
-        $recipient_address = $arResult['PAYCARD']['form_textarea_103'];
-        $phone_recipient = $arResult['PAYCARD']['form_text_149'];
-        $weight = $arResult['PAYCARD']['FULLWEIGTH'].' кг.';
+        $sender_name = ($arResult['PAYCARD']['form_text_50']) ? $arResult['PAYCARD']['form_text_50'] : false;
+        $phone_send = ($arResult['PAYCARD']['form_text_51']) ? $arResult['PAYCARD']['form_text_51'] : false;
+        $mail_send = ($arResult['PAYCARD']['form_email_52']) ? $arResult['PAYCARD']['form_email_52'] : false;
+        $city_send = ($arResult['PAYCARD']['form_text_55']) ? $arResult['PAYCARD']['form_text_55'] : false;
+        $sender_address = ($arResult['PAYCARD']['form_textarea_56']) ? $arResult['PAYCARD']['form_textarea_56'] : false;
+        $recipient_name = ($arResult['PAYCARD']['form_text_62']) ? $arResult['PAYCARD']['form_text_62'] : false;
+        $city_recipient = ($arResult['PAYCARD']['form_text_57']) ? $arResult['PAYCARD']['form_text_57'] : false;
+        $recipient_address = ($arResult['PAYCARD']['form_textarea_103']) ? $arResult['PAYCARD']['form_textarea_103'] : false;
+        $phone_recipient = ($arResult['PAYCARD']['form_text_149']) ? $arResult['PAYCARD']['form_text_149'] : false;
+        $weight = ($arResult['PAYCARD']['FULLWEIGTH']) ? $arResult['PAYCARD']['FULLWEIGTH'].' кг.' : '';
         $date_delivery = $arResult['PAYCARD']['form_text_53'];
         $time = $arResult['PAYCARD']['form_text_54'];
         $desc = $arResult['PAYCARD']['form_textarea_61'];
-        $sum_pay = $arResult['PAYCARD']['TARIF_ITOG'].' руб.';
-        $time_dev = $arResult['PAYCARD']['TIMEDEV'].' дн.';
+        $sum_pay = ((float)$arResult['PAYCARD']['TARIF_ITOG'] > 0) ? $arResult['PAYCARD']['TARIF_ITOG'].' руб.' : false;
+        $time_dev = ((string)$arResult['PAYCARD']['TIMEDEV']) ? $arResult['PAYCARD']['TIMEDEV'].' дн.' : '';
 
-    $arrInf = [$who_delivery, $organization, $mail_send, $sender_name, $phone_send,  $city_send, $sender_address,
+        if(!($sum_pay && $sender_name && $phone_send && $mail_send && $city_send &&
+            $sender_address && $recipient_name && $city_recipient && $recipient_address && $phone_recipient)){
+            header("Location: https://newpartner.ru?break=1");
+            exit;
+        }
+
+        $arrInf = [$who_delivery, $organization, $mail_send, $sender_name, $phone_send,  $city_send, $sender_address,
         $recipient_name, $city_recipient,  $recipient_address, $phone_recipient, $weight, $date_delivery,
         $time, $desc, $sum_pay, $time_dev];
     $data = '<?php $arrInfDocs ='."['{$who_delivery}', '{$organization}', '{$mail_send}', '{$sender_name}', 
@@ -660,10 +674,10 @@ if($type_pay === 'Y' )
      $dataE['NAME_SENDER'] = $sender_name;
      $dataE['CREATOR_NAME_TITLE_RECIPIENT'] = 'Получатель';
      $dataE['NAME_RECIPIENT'] = $recipient_name;
-     $dataE['CREATOR_PHONE_TITLE_SENDER'] = $phone_send;
-     $dataE['CREATOR_PHONE_TITLE_RECIPIENT'] = $phone_recipient;
-     $dataE['PHONE_SENDER'] = 'Телефон отправителя';
-     $dataE['PHONE_RECIPIENT'] = 'Телефон получателя';
+     $dataE['CREATOR_PHONE_TITLE_SENDER'] = 'Телефон отправителя';
+     $dataE['CREATOR_PHONE_TITLE_RECIPIENT'] = 'Телефон получателя';
+     $dataE['PHONE_SENDER'] = $phone_send;
+     $dataE['PHONE_RECIPIENT'] =  $phone_recipient;
      $dataE['DATE_TAKE_FROM'] = $date_delivery;
      $dataE['TIME'] = $time;
      $dataE['CITY_S'] = $city_send;
