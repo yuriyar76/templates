@@ -67,6 +67,7 @@ $host = $_SERVER['DOCUMENT_ROOT'];
     <script type="text/javascript" src="/bitrix/templates/print/JsBarcode.code39.min.js"></script>
 
     <script src="/bitrix/templates/<?=SITE_TEMPLATE_ID;?>/js/invoice_custom.js"></script>
+    <script src="/bitrix/templates/<?=SITE_TEMPLATE_ID;?>/js/moment.js"></script>
     <?$APPLICATION->ShowHeadScripts()?>
     <?
     $name_panel = 'Новый Партнер';
