@@ -193,9 +193,9 @@ if($('a.print_btn_test').length>0) {
 					}else{
 
 						tableStart = `<tr>
-                                        <td width="30%">нет данных</td>
-                                        <td width="35%">нет данных</td>
-                                        <td width="35%">нет данных</td>
+                                        <td width="30%">${data.PROPERTY_1061}</td>
+                                        <td width="35%">${data.PROPERTY_1062}</td>
+                                        <td width="35%">${data.PROPERTY_1062}</td>
                                          </tr>`;
 
 					}
@@ -247,7 +247,7 @@ if($('a.print_btn_test').length>0) {
 					$(`#PROPERTY_1050_MOD_${id}`).html(`<strong>${data.PROPERTY_1050}</strong>`);
 					$(`#PROPERTY_1067_MOD_${id}`).html(`<h4>Спец. инструкции</h4><strong>${data.PROPERTY_1067}</strong>`);
 					$('#update_alert').modal('hide');
-					console.log(data);
+					//console.log(data);
 				}
 			});
 
