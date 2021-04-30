@@ -56,11 +56,6 @@
         } else { f(); }
     })(document, window, "yandex_metrika_callbacks");
 </script>
-        <?php if ($_GET['nocard'] == 1):?>
-            <script>
-                alert('Невозможно оформить платеж банковской картой (проблема с cookie), воспользуйтесь оформлением заявки наличными.');
-            </script>
-        <?php endif;?>
 <noscript><div><img src="https://mc.yandex.ru/watch/16964311" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
  <?/*$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
@@ -75,12 +70,12 @@
         <div id="panel">
             <?$APPLICATION->ShowPanel();?>
         </div>
-        <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+        <?$APPLICATION->IncludeComponent("bitrix:main.include","", [
                 "AREA_FILE_SHOW" => "file", 
                 "PATH" => "/bitrix/templates/newpartner-2016/include_areas/topmenu.inc.php" ,
                 "AREA_FILE_SUFFIX" => "inc", 
-                "EDIT_TEMPLATE" => "standard.php" 
-            )
+                "EDIT_TEMPLATE" => "standard.php"
+            ]
         );?>
 		 <div class="container">
          	<div class="row">
@@ -103,3 +98,4 @@
                                 )
                             );?>
                     <div class="main_block color4 large">
+                    

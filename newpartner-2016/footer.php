@@ -103,29 +103,38 @@
                         $APPLICATION->IncludeComponent(
                             "black_mist:newpartner.calc.v1.0",
                             "calc.index",
-                            Array(
-                                "CACHE_TYPE" => "A",
-                                "CACHE_TIME" => "360000",
+                            [
+                                "CACHE_TYPE" => "N",
+                                "CACHE_TIME" => "0",
                                 "COMPONENT_TEMPLATE" => "calc.index",
                                 "TYPE" => ""
-                            ),
+                            ],
                             false
                         );
 
                   //  }
                     ?>
-					<?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+					<?$APPLICATION->IncludeComponent("bitrix:main.include","", [
                             "AREA_FILE_SHOW" => "file", 
                             "PATH" => "/bitrix/templates/newpartner-2016/include_areas/form3.inc.php" ,
                             "AREA_FILE_SUFFIX" => "inc", 
-                            "EDIT_TEMPLATE" => "standard.php" 
-                        )
-													);?>
+                            "EDIT_TEMPLATE" => "standard.php"
+                      ]
+		    		);?>
 
                   <?php
+
                   /* оплата заявки картой */
                   if($USER->isAdmin()){
-                      $APPLICATION->IncludeComponent(
+                  ?>
+                    <?$APPLICATION->IncludeComponent("bitrix:main.include","", [
+                            "AREA_FILE_SHOW" => "file",
+                            "PATH" => "/bitrix/templates/newpartner-2016/include_areas/paycard.inc.php" ,
+                            "AREA_FILE_SUFFIX" => "inc",
+                            "EDIT_TEMPLATE" => "standard.php"
+                        ]
+                    );
+                      /*$APPLICATION->IncludeComponent(
                           "black_mist:newpartner.paycard.v1.0",
                           "",
                          [
@@ -135,7 +144,7 @@
                               "TYPE" => ""
                           ],
                           false
-                      );
+                      );*/
                   }
 
 
@@ -152,7 +161,7 @@
                     <?$APPLICATION->IncludeComponent(
                         "bitrix:news.list", 
                         "opinions", 
-                        array(
+                        [
                             "IBLOCK_TYPE" => "NEWPARTNER",
                             "IBLOCK_ID" => "61",
                             "NEWS_COUNT" => "4",
@@ -161,14 +170,14 @@
                             "SORT_BY2" => "SORT",
                             "SORT_ORDER2" => "ASC",
                             "FILTER_NAME" => "",
-                            "FIELD_CODE" => array(
+                            "FIELD_CODE" => [
                                 0 => "",
                                 1 => "",
-                            ),
-                            "PROPERTY_CODE" => array(
+                            ],
+                            "PROPERTY_CODE" => [
                                 0 => "",
                                 1 => "",
-                            ),
+                            ],
                             "CHECK_DATES" => "Y",
                             "DETAIL_URL" => "",
                             "AJAX_MODE" => "N",
@@ -210,25 +219,25 @@
                             "PAGER_BASE_LINK_ENABLE" => "N",
                             "SHOW_404" => "N",
                             "MESSAGE_404" => ""
-                        ),
+                        ],
                         false
                     );?>       
                 </div>
             </div>
          </div>
-        <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+        <?$APPLICATION->IncludeComponent("bitrix:main.include","", [
                 "AREA_FILE_SHOW" => "file", 
                 "PATH" => "/bitrix/templates/newpartner-2016/include_areas/footer.inc.php" ,
                 "AREA_FILE_SUFFIX" => "inc", 
-                "EDIT_TEMPLATE" => "standard.php" 
-            )
+                "EDIT_TEMPLATE" => "standard.php"
+            ]
         );?>
-        <?$APPLICATION->IncludeComponent("bitrix:main.include","",Array(
+        <?$APPLICATION->IncludeComponent("bitrix:main.include","", [
                 "AREA_FILE_SHOW" => "file", 
                 "PATH" => "/bitrix/templates/newpartner-2016/include_areas/modal.inc.php" ,
                 "AREA_FILE_SUFFIX" => "inc", 
-                "EDIT_TEMPLATE" => "standard.php" 
-            )
+                "EDIT_TEMPLATE" => "standard.php"
+            ]
         );?>
 		<? 
 		// <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> 

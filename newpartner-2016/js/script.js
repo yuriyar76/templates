@@ -1,10 +1,43 @@
 $(document).ready(function() {
+
+    /* переход на оплату картой из формы указания электронной почты */
+
+    $('#form_user_name').submit(function (e) {
+        e.preventDefault();
+        let fields = $(this).serializeArray();
+        console.log(fields);
+    });
+
     /* оплата картой по номеру накладной с главной */
 
     $('#pay_card_submit').on('click', function(){
         let inputPayCard = $('#input_pay_card').val();
         let inputPayCardZ = $('#input_pay_card_z').val();
-        if(!(inputPayCard.length || inputPayCardZ.length) ) return;
+        if(!(inputPayCard.length || inputPayCardZ.length) ){
+            $('#modal_pay_invoice_alert').modal('show');
+            return;
+        }
+        if(!inputPayCard.length && inputPayCardZ.length){
+            let data = {'number_z': inputPayCardZ };
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: "/payment_invoice_card/validate.php",
+                data: data,
+                success: function(data){
+                    console.log(data);
+                    let numder = data[0].number_z;
+                    let phone = data[1].PERSONAL_PHONE;
+                    let email = data[1].EMAIL;
+                    //console.log(phone);
+                    $('#user_email').val(email);
+                    $('#user_phone').val(phone);
+                    $('#number_z').val(numder);
+                    $('#modal_pay_invoice').modal('show');
+                }
+            });
+            return;
+        }
         let data = {'number': inputPayCard, 'number_z': inputPayCardZ };
         // console.log(data);
         $.ajax({

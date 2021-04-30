@@ -25,7 +25,7 @@ header('Content-Type: text/html; charset=utf-8');
     <?endif;?>
     <?if($_GET['org_inv'] === 'NP'):?>
         <script>
-            var ipay = new IPAY({api_token: 'YRF3C5RFICWISEWFR6GJ'});
+            var ipay = new IPAY({api_token: 'ol0jdnthohvar750hkkodgeudq'});
         </script>
     <?endif;?>
 </head>

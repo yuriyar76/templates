@@ -14,7 +14,6 @@ table.reqv td {
   padding-bottom:0;	
   height:30px;
   line-height:30px;
-  height
   border: 1px solid white;
   background-color: rgba(49, 136, 186, 0.85);
   color:white;
@@ -30,5 +29,5 @@ table.reqv td {
     </div>
 	
 	
-   <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2c725db7ef93ab8b1d079ce569f4b91f9c5f9ecf9c5cb158c7f6ac69fa24e304&amp;width=100%25&amp;height=335&amp;lang=ru_RU&amp;scroll=true"></script>
+   <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A2c725db7ef93ab8b1d079ce569f4b91f9c5f9ecf9c5cb158c7f6ac69fa24e304&amp;width=100%25&amp;height=600&amp;lang=ru_RU&amp;scroll=true"></script>
 </div>

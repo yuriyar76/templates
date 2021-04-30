@@ -4,13 +4,9 @@ header('Content-Type: text/html; charset=utf-8');
 include_once($_SERVER['DOCUMENT_ROOT']."/bitrix/components/black_mist/delivery.packages/functions.php");
 
 AddToLogs('REQUESTS_SBER', ['get' => $_GET, 'data' => 'templates/newpartner-payment/header.php']);
-$type_pay =  trim(htmlspecialchars($_COOKIE['paycard_bank']));
+$type_pay =  trim(htmlspecialcharsEx($_COOKIE['paycard_bank']));
 /* обработка платежа */
  if($_GET['status'] == 1){
-    if (!empty($_SESSION['DataInvoicePay']) && $_COOKIE['pay_invoice'] == 'Y'){
-        header('Location: /payment_invoice/index.php');
-        exit();
-    }
     $data = [];
     $data_app = [];
     $stampfl = htmlspecialcharsEx($_COOKIE['pay_lk_fl']); /* метка если из лк физлиц */
