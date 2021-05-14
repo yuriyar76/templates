@@ -1,0 +1,13 @@
+<?
+$MESS["AUTH_CHANGE_PASSWORD"] = "Zmiana has³a";
+$MESS["AUTH_LOGIN"] = "Login:";
+$MESS["AUTH_CHECKWORD"] = "Znaki kontrolne:";
+$MESS["AUTH_NEW_PASSWORD"] = "Nowe has³o:";
+$MESS["AUTH_NEW_PASSWORD_CONFIRM"] = "Potwierdz has³o:";
+$MESS["AUTH_CHANGE"] = "Zmieñ has³o";
+$MESS["AUTH_REQ"] = "Pola wymagane";
+$MESS["AUTH_AUTH"] = "Autoryzacja";
+$MESS["AUTH_NEW_PASSWORD_REQ"] = "Nowe has³o:";
+$MESS["AUTH_SECURE_NOTE"] = "Has³o zostanie zaszyfrowane przed wys³aniem. Zapobiegnie to, ¿e has³o nie pojawi siê w otwartej formie, poprzez kana³y transmisji danych.";
+$MESS["AUTH_NONSECURE_NOTE"] = "Has³o zostanie wys³ane w formie otwartej. W³±cz obs³ugê JavaScript w przegl±darce, aby w³±czyæ szyfrowanie has³a.";
+?>

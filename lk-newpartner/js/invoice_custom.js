@@ -157,7 +157,55 @@ if($('a.print_btn_test').length>0) {
 			let id = el.id;
 			let s = id.match(/^update_\d+/i);
 			let n = id.match(/^num_edit_\d+/i);
+			let se = id.match(/^status_edit_\d+/i);
 
+			// статус отправления
+			if(null !== se){
+
+				let id_val = id.replace('status_edit_', '');
+				let app_name = $('#NAME_' + id_val).text();
+				let number = $('#PROPERTY_1023_' + id_val + '_p').text();
+				let alert_error = $('#edit_status .alert');
+				alert_error.html('');
+				alert_error.css("display","none");
+     			let in_html = `<h5>Добавить событие доставки по накладной  ${number}</h5>
+				     <form id="edit_status_form" method="post">
+                           <input type="hidden" name="number_edit_status" value="${number}">
+                           <input type="hidden" name="id_edit_status" value="${id_val}">
+                           <input type="hidden" name="id_edit_app_status" value="${app_name}">
+                           <div class="form-group">
+                               <label for="exampleInputStatus">Выбор события</label>
+                               <select name="select_status" id="select_Status" class="form-control">
+                                   <option value='0'>Принято у отправителя</option>
+                                   <option value='1' id='select_status_exception'>Исключительная ситуация</option>
+                                   <option value='2'>Доставлено</option>
+                               </select>
+                           </div>
+                         
+                           <div style="display:none" id="desc_status_block" class="form-group">
+                              <label for="desc_status">Комментарий</label>
+                              <textarea  id="desc_status" class="form-control" name="desc_status" rows="3"></textarea>
+                           </div>
+                           <div style="display:none" id="name_ex" class="form-group"></div>
+                           <div style="display:none" id="comment_status_block" class="form-group">
+                              <label for="comment_status">Сообщение</label>
+                              <textarea  id="comment_status" class="form-control" name="comment_status" rows="3"></textarea>
+                           </div>
+                           <div class="form-group  clearErr ErrDate">
+                              <label for="date_status">Дата и время</label>
+                              <input required type="text" id="date_status" class="form-control input-sm maskdatetime eventDate" 
+                              name="date_status">
+                           </div>
+                          
+                           <button type="submit"  class="btn btn-primary">Изменить</button>
+                       </form>
+			    <script src="/bitrix/templates/lk-newpartner/js/events.form.js"></script>`;
+				let modal_body = $('#edit_status .modal-body');
+				modal_body.html(in_html);
+				$('#edit_status').modal('show');
+			}
+
+			// номер накладной
 			if (null !== n) {
 				let id_val = id.replace('num_edit_', '');
 				let app_name = $('#NAME_' + id_val).text();
@@ -166,8 +214,6 @@ if($('a.print_btn_test').length>0) {
 				let alert_error = $('#edit_number .alert');
 				alert_error.html('');
 				alert_error.css("display","none");
-
-
 				let in_html = `<h5>Изменение № накладной ${number}</h5>
 				    <form id="edit_number_form" method="post">
 				        <input type="hidden" name="number_edit_num" value="${number}">
@@ -179,41 +225,7 @@ if($('a.print_btn_test').length>0) {
 						  </div>  
 						  <button type="submit" class="btn btn-primary">Изменить</button>
 				    </form>
-			    <script>
-                   $('#edit_number_form').submit(function (e) {
-						e.preventDefault();
-						$('#edit_number_form button[type=submit]').attr('disabled', 'disabled');
-						let fields = $(this).serializeArray();
-						$.ajax({
-					    type: "POST",
-						dataType: "json",
-						url: "/tools/change_invoice.php?number=Y",
-						data: fields,
-						success: function(data)
-						{
-						console.log(data);
-						if(data.error){
-						let alert_error = $('#edit_number .alert');
-						alert_error.css("display","block");
-						alert_error.html('<p>' + data.error + '</p>')
-						console.log(data.error);
-						$('#edit_number_form button[type=submit]').removeAttr('disabled');
-						}else{
-						console.log(data.newnumber);
-						let modal_body = $('#edit_number .modal-body');
-                        modal_body.html('<h4 style="text-align: center">Обновляем...</h4>' +
-						'<div style="display: flex; flex-direction: row; justify-content: center">' +
-						'<img style="display:block" src="/bitrix/components/black_mist/newpartner.requests.v.2.1/templates/lk-newpartner/images/spinner.gif"' +
-						' alt="">' +
-						'</div>');
-						$('#edit_number').modal('hide');
-						}
-						
-						}
-						});
-						});
-                </script>         
-				`;
+				<script src="/bitrix/templates/lk-newpartner/js/edit.number.form.js"></script>`;
 				let modal_body = $('#edit_number .modal-body');
 				modal_body.html(in_html);
 				$('#edit_number').modal('show');

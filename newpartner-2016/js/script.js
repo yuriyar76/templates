@@ -6,6 +6,26 @@ $(document).ready(function() {
         e.preventDefault();
         let fields = $(this).serializeArray();
         console.log(fields);
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "/payment_invoice_card/index.php",
+            data: fields,
+            success: function(data){
+                console.log(data);
+
+                if (data.error){
+                    alert(data.error);
+                    return false;
+                }
+                if(data.Sum && data.Org){
+                    $.cookie("pay_invoice", "Y");
+                    window.open(`https://newpartner.ru/payment_invoice/?org_inv=${data.Org}`, '_blank');
+                    return false;
+                }
+
+            }
+        });
     });
 
     /* оплата картой по номеру накладной с главной */
